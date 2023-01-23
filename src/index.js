@@ -11,7 +11,7 @@ const useDrilldownCallback = ({
   datasets,
   labels,
   onDrilldownRequested,
-  pivotConfig
+  pivotConfig,
 }) => {
   return React.useCallback(
     (elements) => {
@@ -24,7 +24,7 @@ const useDrilldownCallback = ({
         onDrilldownRequested(
           {
             xValues,
-            yValues
+            yValues,
           },
           pivotConfig
         );
@@ -37,7 +37,7 @@ const useDrilldownCallback = ({
 const LineChartRenderer = ({
   resultSet,
   pivotConfig,
-  onDrilldownRequested
+  onDrilldownRequested,
 }) => {
   const datasets = useDeepCompareMemo(
     () =>
@@ -61,20 +61,20 @@ const LineChartRenderer = ({
           // crosshairMarkerBorderColor: "#ffffff",
           // crosshairMarkerBackgroundColor: "#2296f3"
           // lineType: 2
-        }
+        },
       })),
     [resultSet, pivotConfig]
   );
   const data = {
     labels: resultSet.categories(pivotConfig).map((c) => c.x),
-    datasets
+    datasets,
   };
 
   const getElementAtEvent = useDrilldownCallback({
     datasets: data.datasets,
     labels: data.labels,
     pivotConfig,
-    onDrilldownRequested
+    onDrilldownRequested,
   });
 
   const options = {
@@ -90,8 +90,8 @@ const LineChartRenderer = ({
           date.getDate();
         console.log({ formattedTick });
         return formattedTick;
-      }
-    }
+      },
+    },
   };
 
   return (
@@ -111,7 +111,7 @@ const cubejsApi = cubejs(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzQ1NTE3Mjd9.vpSA6uDyKKmhDkD0WXB7FWtt0CpiaH4mvHT2lwFqn7c",
   {
     apiUrl:
-      "https://crazy-crothersville.gcp-europe-west2-a.cubecloudapp.dev/dev-mode/dev-leo-a5392253/cubejs-api/v1"
+      "https://crazy-crothersville.gcp-europe-west2-a.cubecloudapp.dev/dev-mode/dev-leo-a5392253/cubejs-api/v1",
   }
 );
 
@@ -150,8 +150,8 @@ const ChartRenderer = () => {
         {
           member: "Ticker.symbol",
           operator: "equals",
-          values: [symbol]
-        }
+          values: [symbol],
+        },
       ];
     }
     return [];
@@ -164,15 +164,15 @@ const ChartRenderer = () => {
         timeDimensions: [
           {
             dimension: "Ticker.timestamp",
-            granularity: "day"
-          }
+            granularity: "day",
+          },
         ],
         order: {
-          "Ticker.timestamp": "asc"
+          "Ticker.timestamp": "asc",
         },
         dimensions: ["Ticker.symbol"],
         limit: 5000,
-        filters: filters()
+        filters: filters(),
       }}
       cubejsApi={cubejsApi}
       resetResultSetOnChange={false}
@@ -184,8 +184,8 @@ const ChartRenderer = () => {
             x: ["Ticker.timestamp.day"],
             y: ["Ticker.symbol", "measures"],
             fillMissingDates: false,
-            joinDateRange: false
-          }
+            joinDateRange: false,
+          },
         })
       }
     />
