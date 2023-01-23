@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@cubejs-client/core": "latest",
+    "@cubejs-client/react": "latest",
+    "@qognicafinance/react-lightweight-charts": "1.0.5",
+    "antd": "4.16.13",
+    "chart.js": "3.4.0",
+    "react": "17.0.1",
+    "react-chartjs-2": "3.0.3",
+    "react-dom": "17.0.1",
+    "use-deep-compare": "latest"
+  },
+  "keywords": [],
+  "name": "carbonwire-charts-demo",
+  "description": ""
+}
