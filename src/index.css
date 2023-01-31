@@ -1,0 +1,16 @@
+html,
+body {
+  font-family: "Inter", Roboto, Ubuntu, sans-serif;
+  background: #f9fafb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.charts-wrapper {
+  position: relative;
+}
+
+.three-line-legend {
+  position: absolute;
+  z-index: 10;
+}
